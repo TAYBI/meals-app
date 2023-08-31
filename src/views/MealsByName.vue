@@ -37,7 +37,7 @@
           <hr v-else class="mb-2" />
 
           <router-link
-            to="/"
+            :to="{ name: 'MealDetails', params: { id: meal.idMeal } }"
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-600 rounded-lg hover:bg-orange-800 focus:ring-4 cursor-pointer">
             Read more
             <svg
@@ -65,7 +65,7 @@ import store from "../store";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-const keyword = ref("");
+const keyword = ref();
 const meals = computed(() => store.state.searchedMeals) || [];
 
 const splitJoin = (theText: string) => theText.split(",");
