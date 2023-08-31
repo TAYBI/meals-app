@@ -17,15 +17,16 @@
   </div>
 </template>
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import store from "../store";
 import axiosClient from "../axiosClient";
 
 const letters = "abcdefghijklmnopqrstuvwxyz";
+const ingrediants = ref([]);
 
 onMounted(async () => {
   const response = await axiosClient.get("list.php?i=list");
-  console.log(response.data);
+  ingrediants.value = response.data;
 });
 </script>
 <style></style>
